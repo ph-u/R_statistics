@@ -1,0 +1,33 @@
+% Author: PokMan Ho pok.ho19@imperial.ac.uk
+% Script: choice.tex
+% Desc: choosing stat test section
+% Input: none
+% Output: none
+% Arguments: 0
+% Date: Jan 2020
+
+\documentclass[../note.tex]{subfiles} %% use packages & commands as this main file
+
+\begin{document}
+
+\section{Choosing statistical test(s)}
+This step should ideally be planned before collecting any data, with details of how to choose such test(s) explained \href{https://www.dataanalytics.org.uk/data-analytics-knowledge-base-tips-tricks-r-excel/statistics-guide/which-statistics-test/}{here} or \href{http://stats.idre.ucla.edu/other/mult-pkg/whatstat/}{here}.  Basically considering aspects are summarized in a few points (each variable has one of this decision):
+\begin{itemize}
+    \item data type: categorical (ordered or unordered) or numerical?
+    \item x-y pairing: which data type(s) are combining in your hypothesis?
+    \item how many variables (independent and dependent are grouped separately) are considered in one test?
+    \item data value distribution (decide after data collection): normally-distributed (parametric) or skewed (non-parametric OR data transformation then parametric)?
+\end{itemize}
+
+Remember: regardless how absurd the data looks, there is always an explanation to the pattern.  Hence there is always no need to remove any data (unless the data is justified as low-quality data), although data removal is usually an easy path to go.
+
+Below is a list of frequently used tests with parametric equivalent in round brackets and conditions as description:
+\begin{itemize}
+    \item Kruskal (ANOVA / two-way ANOVA): numeric dependent, categorical independent with internal group(s)
+    \item Wilcoxon (paired-t): numeric dependent, two numeric independents
+    \item Spearman (Chi-Sq): numeric dependent, numeric independent
+\end{itemize}
+
+Since many biological data are found log-normal, log data transformation is justified.  Other than that, it is not recommended doing data transformation due to the loss of data structure after such an operation.
+
+\end{document}

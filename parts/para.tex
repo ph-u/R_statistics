@@ -1,0 +1,53 @@
+% Author: PokMan Ho pok.ho19@imperial.ac.uk
+% Script: para.tex
+% Desc: parametric test section
+% Input: none
+% Output: none
+% Arguments: 0
+% Date: Jan 2020
+
+\documentclass[../note.tex]{subfiles} %% use packages & commands as this main file
+
+\begin{document}
+
+\section{Parametric tests}
+Parametric tests are less powerful than non-parametric tests in terms of data flexibility (as all of them assumes normal-distributed data).  However within its limitation, all of them are powerful than their non-parametric equivalent.  It is due to the linear model property, which a straight line can be extended to infinity on x-axis and still give a meaningful corresponding y-value.
+
+The universal match of this type of test is the use of code (in ``stats" package\autocite{Rcore})
+\begin{code}
+summary(lm(a\$dep $\sim$ a\$indep\_1 + a\$indep\_2 * a\$indep\_3$^2$))\\
+\# a basic summary of all parametric methods introduced in this note - they are all linear models\\
+\# this code in a summary of a linear model with a formula of y against independent x1 and interactive x2 and x3-squared\\
+\# resemble linear formula: $y = k_1\cdot x1 + k_2\cdot x2\cdot x3^2$
+\end{code}
+
+\subsection{ANOVA}
+The full name is ANalysis Of VAriance, which has five \href{https://www.real-statistics.com/one-way-analysis-of-variance-anova/assumptions-anova/}{assumptions}.  The most important ones are ``the data is normally-distributed" and ``variance between groups share the same value".
+
+The code (in ``stats" package\autocite{Rcore}) for one-way ANOVA is
+\begin{code}
+summary(aov(a\$dep $\sim$ a\$indep\_2))\\
+\# get a summary form of the y against x ANOVA test
+\end{code}
+
+The same code can also use for n-way ANOVA (here I demonstrate n=3)
+\begin{code}
+summary(aov(a\$dep $\sim$ a\$indep\_1 + a\$indep\_2 * a\$indep\_3$^2$))\\
+\# same formula as the above linear model, just using the aov approach
+\end{code}
+
+\subsection{Paired-t test}
+This test is for testing mean difference between two normally-distributed samples.  The code (in ``stats" package\autocite{Rcore}) is
+\begin{code}
+t.test(a\$dep $\sim$ a\$indep\_1, paired=T)\\
+\# y against x, which x only have one or two levels
+\end{code}
+
+\subsection{Chi-Sq correlation}
+This test is for correlation on normally-distributed numeric dependent and independent variables.  The code (in ``stats" package\autocite{Rcore}) is
+\begin{code}
+cor.test(a\$indep\_3, a\$dep, method="pearson")\\
+\# same with spearman above, only switched the method parameter
+\end{code}
+
+\end{document}

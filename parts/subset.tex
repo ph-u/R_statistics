@@ -1,0 +1,22 @@
+% Author: PokMan Ho pok.ho19@imperial.ac.uk
+% Script: subset.tex
+% Desc: data subsetting section
+% Input: none
+% Output: none
+% Arguments: 0
+% Date: Jan 2020
+
+\documentclass[../note.tex]{subfiles} %% use packages & commands as this main file
+
+\begin{document}
+
+\section{Data subsets}
+This is an important issue when you are given a huge data contaminated by useless data.  Apart from the usual and straight-forward ``subset" command, a filter command ``which" (in ``base" package\autocite{Rcore}) is much more powerful.  The code is:
+\begin{code}
+a.0<-a[which(a\$indep\_2=="a" \& a\$indep\_1!="a"),]\\
+a\_1<-a[which(a\$indep\_2=="a" | a\$indep\_1!="a"),]\\
+\# select whole rows in data.frame \textbf{a} which its columns indep\_2 is "a" and/or indep\_1 is not "a"
+\end{code}
+Chaining up these filter operators make data subset operation faster, quicker and more efficient.  However, it is generally recommended not to mix ``\&" and ``|" unless you're very sure about what is going on with these filters.  Separating these two filter operators generally make your code more readable and hence, potentially increase your work efficiency in the long run.
+
+\end{document}

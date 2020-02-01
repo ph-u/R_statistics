@@ -1,0 +1,67 @@
+% Author: PokMan Ho pok.ho19@imperial.ac.uk
+% Script: npara.tex
+% Desc: non-parametric test section
+% Input: none
+% Output: none
+% Arguments: 0
+% Date: Jan 2020
+
+\documentclass[../note.tex]{subfiles} %% use packages & commands as this main file
+
+\begin{document}
+
+\section{Non-parametric tests}
+Non-parametric tests are powerful because they can fit any data distribution types.  However due to their intrinsic data handling method (ranks are used instead of actual data), only the data order can be preserved.  So test result cannot be used to predict anything out of the reach of the data coverage.
+
+Remember to confirm (in case it's necessary) your independent variables as text string data type (the most flexible data type) before doing anything to them, as usually strings, by default, identified as ``factor" data type by R (which is stored as a number).
+\begin{code}
+a\$indep\_3<-as.character(a\$indep\_3)\\\# column conversion from any data to text string data type
+\end{code}
+
+\subsection{Kruskal test}
+This test is very flexible, and is primarily for categorical independent variables.  It is testing the rank differences (i.e. ``variances" in parametric terms) between groups.  There are two ways to use this code (in ``stats" package\autocite{Rcore}) - one dependent test against one or multiple independent variables.  Since the code strictly accepts one independent variable, we fit its syntax limitation by combining variables together to make a single combined variable.
+
+For one independent variable,
+\begin{code}
+kruskal.test(a\$dep $\sim$ a\$indep\_1)\\\# y against x
+\end{code}
+
+For multiple independent variables,
+\begin{code}
+kruskal.test(a\$dep $\sim$ interaction(a\$indep\_1, a\$indep\_2, a\$indep\_3))\\\# y against combined independent variables x1, x2, x3...
+\end{code}
+
+If kruskal.test result showed significance, that means there were at least one pairwise rank difference having significant difference.  To find out which exact pair(s) are standing out from the crowd, we need a post-hoc test.  I used Nemenyi pairwise comparison (in ``PMCMR" package\autocite{PMCMR}), which does not require p-value correction\autocite{PMCMR}.
+
+For one dependent and one independent variables,
+\begin{code}
+library(PMCMR)\\\\
+posthoc.kruskal.nemenyi.test(a\$dep $\sim$ as.factor(a\$indep\_1))\\\# meet code requirement, convert independent variable to factor data type (if necessary)
+\end{code}
+
+For one dependent and multiple independent variables,
+\begin{code}
+library(PMCMR)\\\\
+posthoc.kruskal.nemenyi.test(a\$dep $\sim$ interaction(a\$indep\_1, a\$indep\_2, a\$indep\_3))\\\# "interaction" code already converted its content to factor data type, so there's no need to convert as we've done for the above step
+\end{code}
+
+\subsection{Wilcoxon test}
+This test can only test the rank mean difference between two groups, and the code (in ``stats" package\autocite{Rcore}) is
+\begin{code}
+wilcox.test(a\$dep $\sim$ a\$indep\_1)\\\# y against x, with x only have two levels
+\end{code}
+
+\subsection{Spearman correlation}
+This test is a test for correlation, which is only useful on one dependent and one independent variable.  Both must be numbers (``numeric" or ``integer" data type).
+
+Data type conversion (if necessary)
+\begin{code}
+a\$indep\_3<-as.numeric(a\$indep\_3)\\\# column conversion from any data to numeric data type
+\end{code}
+
+Spearman correlation code (in ``stats" package\autocite{Rcore})
+\begin{code}
+cor.test(a\$indep\_3, a\$dep, method="spearman")\\\# x, y, method of testing
+\end{code}
+
+\end{document}

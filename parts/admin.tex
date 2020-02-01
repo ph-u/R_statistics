@@ -1,0 +1,48 @@
+% Author: PokMan Ho pok.ho19@imperial.ac.uk
+% Script: admin.tex
+% Desc: admin section
+% Input: none
+% Output: none
+% Arguments: 0
+% Date: Jan 2020
+
+\documentclass[../note.tex]{subfiles} %% use packages & commands as this main file
+
+\begin{document}
+
+\section{Administrative issues}
+
+\subsection{R environment}
+It is crucial to clean the environment just to make sure none of the previous operations have any chance to mess up your current code, making your analyses non-reproducible.
+\begin{code}
+rm(list=ls(all=T))\\\#rm all\\\\
+rm(list=ls(pattern="temp"))\\\#rm data names contain pattern "temp"
+\end{code}
+
+\subsection{Sample data in this note}
+The author chose to use arbitrary data for demonstration purposes.  Codes for generating such data sets were showed and explained below:
+
+One numeric dependent + two categorical unordered independent + one numeric independent
+\begin{code}
+set.seed(998)\\\# fix random number generation algorithm, for code reproducibility\\\\
+
+a<-as.data.frame(matrix(nrow = 1e3, ncol = 4))\\\# initialize empty dataframe\\\\
+
+colnames(a)=c("dep", "indep\_1", "indep\_2", "indep\_3")\\\\
+
+a\$dep<-runif(nrow(a))\\\# sample number of values meet number of rows of dataframe \textbf{a} from uniform distribution between 0 and 1\\\\
+
+a\$indep\_1<-c("a","b")\\\# repeating "a", "b" pattern until fill up the dataframe (length difference must be in multiples)\\\\
+
+a\$indep\_2<-sample(c("a","c","d","e"),nrow(a), replace = T)\\\# sample number of values meet number of rows of dataframe \textbf{a} from designated pool with element replacement after each element selection\\\\
+
+a\$indep\_3<-rnorm(nrow(a))\\\# sample number of values meet number of rows of dataframe \textbf{a} from normal distribution with mean 0, sd 1
+\end{code}
+
+\subsection{Colours}
+Colours used in this note were colour-blinded friendly, collected from various sources in the internet:
+\begin{code}
+cbp <- c("\#000000", "\#E69F00", "\#56B4E9", "\#009E73", "\#0072B2", "\#D55E00", "\#CC79A7", "\#e79f00", "\#9ad0f3", "\#F0E442", "\#999999", "\#cccccc", "\#6633ff", "\#00FFCC", "\#0066cc")
+\end{code}
+
+\end{document}

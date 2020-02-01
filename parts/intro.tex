@@ -1,0 +1,32 @@
+% Author: PokMan Ho pok.ho19@imperial.ac.uk
+% Script: intro.tex
+% Desc: introduction section
+% Input: none
+% Output: none
+% Arguments: 0
+% Date: Jan 2020
+
+\documentclass[../note.tex]{subfiles} %% use packages & commands as this main file
+
+\begin{document}
+
+\section{Motivation, Aims and Introduction}
+There are a lot of useful statistical materials scattered in the internet.  This short note is aimed at summarizing the most important information and provide extensive links to these useful materials for readers.  All links and quoted materials in this note are all open access (no ``free sign-up" or information behind paywall) to the general public.  For scientific materials, please consider access through sci-hub (domain \href{https://sci-hub.se/}{se} or \href{https://sci-hub.tw/}{tw}, depending on your IP location), which is scripted by a Russian scientist.  The author share the same view on scientific knowledge access right with this scientist.
+
+The author attempt to minimize the use of external packages, demonstrating the effectiveness and power of the base R\autocite{Rcore} environment (ver 3.6.0).  By reading this note, the author assumes readers:
+\begin{enumerate}
+    \item have basic understanding on R commands and syntax (e.g. know R's extensive use of brackets and commas, indentations are for human readability only...)
+    \item know that R is effective at doing columnize / rowwise operations
+    \item understand csv data structure (e.g. columns and rows indication; differences between data.frame and matrix...)
+\end{enumerate}
+
+For readers just started, some materials can be found \href{https://www.r-bloggers.com/how-to-learn-r-2/}{here}
+
+In this note R codes would be encapsulated in the following format:
+\begin{code}
+    sample code\\
+    \# comment (description for the above code, if necessary)\\
+    \# if the code does not have library(pkg) part, it is from the core R
+\end{code}
+
+\end{document}

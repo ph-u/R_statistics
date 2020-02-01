@@ -1,0 +1,93 @@
+% Author: PokMan Ho pok.ho19@imperial.ac.uk
+% Script: note.tex
+% Desc: R statistics note
+% Input: none
+% Output: none
+% Arguments: 0
+% Date: Jan 2020
+
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{multirow}
+
+\usepackage{xcolor,colortbl}
+\definecolor{grey}{rgb}{.95,.95,.95}
+\definecolor{green}{rgb}{0,.4,0}
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=green,
+	filecolor=red,      
+	urlcolor=blue,
+	citecolor=orange
+}
+
+%% new environments
+\newsavebox{\coloredbgbox}
+\newenvironment{greybox}
+  {\begin{lrbox}{\coloredbgbox}\begin{minipage}{0.95\textwidth}}
+  {\end{minipage}\end{lrbox}%
+   \begin{center}\colorbox{grey}{\usebox{\coloredbgbox}}\end{center}} %% https://tex.stackexchange.com/questions/29060/newenvironment-issues-with-environment-comment
+\newenvironment{scripting}{\fontfamily{qcr}\selectfont}{\par} %% https://tex.stackexchange.com/questions/25249/how-do-i-use-a-particular-font-for-a-small-section-of-text-in-my-document
+\newenvironment{code} %% https://www.overleaf.com/learn/latex/Environments#Defining_a_new_environment
+{
+\begin{center}
+\begin{greybox}
+\begin{scripting}
+    \begin{tabular}{|p{.97\linewidth}|}
+         \hline\\
+         }{
+         \\\\\hline
+    \end{tabular}
+\end{scripting}
+\end{greybox}
+\end{center}
+}
+
+\usepackage{graphicx}
+\graphicspath{{graph/}{graph/}}
+
+\title{Playing Data in R}
+\author{PokMan HO}
+\date{}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L]{written by: PokMan HO}
+\fancyhead[C]{Playing Data in R}
+\fancyhead[R]{started: 26 Jan 2020}
+\fancyfoot[C]{\thepage}
+\fancyfoot[L]{scripted at: Silwood Park, ICL}
+\fancyfoot[R]{last update: Jan 2020}
+
+\usepackage[
+autocite    = superscript,
+backend     = bibtex,
+sortcites   = true,
+style       = nature,
+]{biblatex}
+\bibliography{Rbib.bib}
+
+\usepackage{subfiles} %% load last
+\begin{document}
+
+\maketitle
+\tableofcontents
+\clearpage
+
+\subfile{parts/intro}
+\subfile{parts/choice}
+\subfile{parts/admin}
+\subfile{parts/subset}
+\subfile{parts/npara}
+\subfile{parts/para}
+\subfile{parts/normality}
+\subfile{parts/plot}
+\subfile{parts/nlls}
+
+\nocite{*}\printbibliography
+\end{document}
