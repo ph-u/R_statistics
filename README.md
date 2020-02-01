@@ -2,7 +2,7 @@
 
 This is a note written for people who want a concentrated overview on general statistics operation in R.  
 
-Main note is `note.tex`, each section is in `parts/` directory  
+The main note is `note.pdf` (\LaTeX version `note.tex`), each section is in `parts/` directory  
 
 R version: 3.6.0  
 
