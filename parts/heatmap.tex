@@ -64,7 +64,7 @@ Below is a feature comparison table of the above three candidates, which showed 
     \hline\end{tabular}
 \end{center}
 
-One thing to note is ``missing data", which would always being displayed as "white" in the levelplots (Fig.\ref{g:lv3}).  So do avoid having this colour as part of the colour scale to prevent confusions.
+One thing to note is ``missing data", which would always being displayed as ``white" in the levelplots (Fig.\ref{g:lv3}).  So do avoid having this colour as part of the colour scale to prevent confusions.
 
 \subsection{continuous numeric}
 \begin{code}
@@ -103,7 +103,7 @@ levelplot(c0\$z~c0\$x*c0\$y, col.regions = rev(gray(20:70/100)), xlab = "x-axis"
 \subsection{unordered categorical}
 \begin{code}
 set.seed(998)\\\\
-c1 = data.frame("x"=c("A","B","C"), "y"=c(rep("A",3),rep("B",3),rep("C",3)), "z"=runif(9)-.2)\\
+c1 = data.frame("x"=c("A","B","C"), "y"=c(rep("A",3), rep("B",3), rep("C",3)), "z"=runif(9)-.2)\\
 \# a three-columned dataframe named "c1" with column names "x", "y", "z"\\
 \# column "x" is a chain of 3-elements textstring\\
 \# column "y" is a chain of repeated character textstring\\
