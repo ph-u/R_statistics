@@ -74,3 +74,9 @@ par(mar=c(5.1, 4.1, 4.1, 8.1), xpd=TRUE)
 matplot(x=b$time, y=b[,-1], type="l", col = cbp, xlab = "time unit", ylab = "values", main="matplot demonstration")
 legend("topright", inset=c(-.05,0), legend = c("y1", "y2", "y3"), pch = rep(16,3), col = cbp)
 dev.off()
+
+## heatmap in lattice pkg
+library(lattice)
+y=c();for(i in -3:6){y<-c(y,rep(i,10))};rm(i)
+c = data.frame("x"=rep(-5:4,10),"y"=y,"z"=runif(100));rm(y)
+levelplot(c$z~c$x*c$y, col.regions = rev(gray(0:100/100)))
