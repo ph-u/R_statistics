@@ -10,9 +10,18 @@
 
 \begin{document}
 
-\section{2D level plot (heatmap)}
-\subsection{data}
+\section{2D level plot (heatmap) with given data}
+Heatmap is available for ``stats" package\autocite{Rcore}, which requires a matrix input and without a intrinsic colour reference (forum \href{https://stackoverflow.com/questions/9314658/colorbar-from-custom-colorramppalette}{thread} on creating a colour reference).  ``ggplot2" package\autocite{ggplot} also provide a \href{https://stackoverflow.com/questions/43772017/continuous-gradient-color-fixed-scale-heatmap-ggplot2}{solution} but the code is long.  For users not used to the ``ggplot2" package, learning curve might also be steep.  Hence, the author recommends the ``lattice" package\autocite{lattice}, which provides a simple yet on-point method for plotting a dependent variable against two independent variables.
 
-\subsection{Heatmap plot}
+One thing to note is ``missing data", which always being displayed as "white" in the levelplots (Fig.).
+
+\subsection{continuous numeric}
+
+
+\subsection{unordered categorical}
+
+
+\subsection{mixed datatypes}
+
 
 \end{document}
