@@ -14,3 +14,4 @@ Highlighted sections
 4. Normality tests (shapiro, qqPlot, histogram)
 5. Plot (plot by group in base R, legend positions)
 6. Non-Linear Least Square model fitting
+7. Heatmaps
