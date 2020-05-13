@@ -1,6 +1,6 @@
 #!/bin/env Rscript
 
-# Author 	: PokMan Ho (hpokman@connect.hku.hk)
+# Author 	: ph-u
 # Script 	: Rcode.R
 # Input 	: None
 # Argument 	: None
